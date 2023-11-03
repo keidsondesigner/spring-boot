@@ -4,6 +4,8 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +23,7 @@ public class PrimeiraController {
 
   // Query params
   @GetMapping("/metodoComQueryParams")
+  // vou receber o id(parametro) na url da requisação;
   public String metodoComQueryParams(@RequestParam String id){
     return "O parametro com metodoComQueryParans é " + id;
   }
@@ -29,5 +32,11 @@ public class PrimeiraController {
   // agrupando todos os parametos passado na url em um array
   public String metodoComQueryParams2(@RequestParam Map<String, String> allParams){
     return "O parametro com metodoComQueryParans é " + allParams.entrySet();
+  }
+
+  @PostMapping("/metodoBodyParams")
+  // vou receber o meus dados no body da requisação;
+  public String metodoBodyParams(@RequestBody String username) {
+    return "metodoBodyParams" + username;
   }
 }
