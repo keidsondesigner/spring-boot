@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,5 +46,18 @@ public class PrimeiraController {
   @GetMapping("/metodoResponsyEntity")
   public ResponseEntity<Object> metodoResponsyEntity() {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("mensagem de erro");
+  
+  // Headers params
+  @PostMapping("/metodoHeadersParams")
+  // vou receber o meus dados no headers da requisação;
+  public String metodoHeadersParams(@RequestHeader("name") String name) {
+    return "metodoHeadersParams" + name;
+  }
+
+  // recebo um array de dados no headers
+  @PostMapping("/metodoHeadersParams2")
+  // vou receber o meus dados no headers da requisação;
+  public String metodoHeadersParams2(@RequestHeader Map<String, String> headers) {
+    return "metodoHeadersParams" + headers.entrySet();
   }
 }
