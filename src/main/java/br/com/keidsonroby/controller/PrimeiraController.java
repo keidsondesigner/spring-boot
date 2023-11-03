@@ -46,6 +46,7 @@ public class PrimeiraController {
   @GetMapping("/metodoResponsyEntity")
   public ResponseEntity<Object> metodoResponsyEntity() {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("mensagem de erro");
+  }
   
   // Headers params
   @PostMapping("/metodoHeadersParams")
