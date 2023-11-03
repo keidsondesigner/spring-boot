@@ -2,6 +2,8 @@ package br.com.keidsonroby.controller;
 
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,6 +43,10 @@ public class PrimeiraController {
     return "metodoBodyParams" + username;
   }
 
+  @GetMapping("/metodoResponsyEntity")
+  public ResponseEntity<Object> metodoResponsyEntity() {
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("mensagem de erro");
+  
   // Headers params
   @PostMapping("/metodoHeadersParams")
   // vou receber o meus dados no headers da requisação;
